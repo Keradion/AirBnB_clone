@@ -7,12 +7,20 @@ from datetime import datetime
 class BaseModel():
     """ Defines common attributes/methods shared among other classes """
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """ Initialize Instance """
 
-        self.id = str(uuid4())
-        self.created_at = datetime.now()
-        self.update_at = self.created_at
+        if kwargs:
+            # recreate an instance
+            for key, value in kwargs.items():
+                if key in ('created_at', 'updated_at'):
+                    setattr(self, key, datetime.fromisoformat(value))
+                elif key != '__class__':
+                    setattr(self, key, value)
+        else:
+            self.id = str(uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = self.created_at
 
     def __str__(self):
         """ Return String Representation """
@@ -21,7 +29,7 @@ class BaseModel():
 
     def save(self):
         """ updtaes updated_at with current datetime """
-        self.update_at = datetime.now()
+        self.updated_at = datetime.now()
 
     def to_dict(self):
         """ Returns a dictionary contaning all keys/values of/
@@ -29,7 +37,7 @@ class BaseModel():
         new_dict = {}
 
         for key, value in self.__dict__.items():
-            if (key == 'created_at' or key == 'update_at'):
+            if (key == 'created_at' or key == 'updated_at'):
                 new_dict[key] = value.isoformat()
             else:
                 new_dict[key] = value
