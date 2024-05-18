@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ module holds class Review definition """
-
+form models.base_model import BaseModel
 
 class Review(BaseModel):
     """ Inherit from BaseModel class """
