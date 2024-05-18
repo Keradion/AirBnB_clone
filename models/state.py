@@ -2,6 +2,6 @@
 """ module holds class State definition """
 
 
-class State:
+class State(BaseModel):
     """ Inherit from BaseModel class """
     name: str = ''

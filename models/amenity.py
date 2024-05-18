@@ -2,6 +2,6 @@
 """ module holds class Amenity definition """
 
 
-class Amenity:
+class Amenity(BaseModel):
     """ Inherit from BaseModel class """
     name: str = ''

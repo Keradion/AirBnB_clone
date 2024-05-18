@@ -2,7 +2,7 @@
 """ module holds class Place definition """
 
 
-class Place:
+class Place(BaseModel):
     """ Inherit from BaseModel class """
     city_id: str = ''  # it will be the City.id
     user_id: str = ''  # it will be the user.id
