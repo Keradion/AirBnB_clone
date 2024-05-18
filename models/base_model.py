@@ -12,7 +12,7 @@ class BaseModel:
     def __init__(self, *args, **kwargs):
         """ Initialize Instance """
 
-        if kwargs:
+        if len(kwargs) > 0:
             # recreate an instance
             for key, value in kwargs.items():
                 if key in ('created_at', 'updated_at'):
