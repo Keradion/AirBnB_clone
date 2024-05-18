@@ -23,7 +23,7 @@ class BaseModel:
             self.created_at = datetime.now()
             self.updated_at = self.created_at
             # adding new instance to __objects
-            model.storage.new(self)
+            models.storage.new(self)
 
     def __str__(self):
         """ Return String Representation """
