@@ -1,4 +1,10 @@
 #!/usr/bin/python3
 """ Module consist a statment that prints to a console """
 
-print('Hello Airbnb')
+
+def print_hello():
+    """ Print to console """
+    print('Hello Airbnb')
+
+
+print_hello()
