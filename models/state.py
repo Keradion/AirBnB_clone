@@ -5,4 +5,4 @@ from models.base_model import BaseModel
 
 class State(BaseModel):
     """ Inherit from BaseModel class """
-    name: str = ''
+    name = ''
