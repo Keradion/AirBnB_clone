@@ -5,10 +5,10 @@ from models.base_model import BaseModel
 
 class Place(BaseModel):
     """ Inherit from BaseModel class """
-    city_id = ''  # it will be the City.id
-    user_id = ''  # it will be the user.id
-    name = ''
-    description = ''
+    city_id = " "  # it will be the City.id
+    user_id = " "  # it will be the user.id
+    name = " "
+    description = " "
     number_rooms = 0
     number_bathrooms = 0
     max_guest = 0
