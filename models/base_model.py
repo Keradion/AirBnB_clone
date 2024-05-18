@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ Module that defines class Basemodel """
-from uuid import uuid4
+
+import uuid 
 from datetime import datetime
 import models
 
@@ -19,7 +20,7 @@ class BaseModel:
                 elif key != '__class__':
                     setattr(self, key, value)
         else:
-            self.id = str(uuid4())
+            self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
             # adding new instance to __objects
