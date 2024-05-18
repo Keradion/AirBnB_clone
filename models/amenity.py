@@ -5,4 +5,4 @@ from models.base_model import BaseModel
 
 class Amenity(BaseModel):
     """ Inherit from BaseModel class """
-    name = " "
+    name = ""
