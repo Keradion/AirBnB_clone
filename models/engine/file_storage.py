@@ -3,6 +3,12 @@
 import os.path
 import json
 from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.place import Place
+from models.city import City
+from models.review import Review
+from models.amenity import Amenity
 
 
 class FileStorage:
@@ -36,6 +42,10 @@ class FileStorage:
 
     def reload(self):
         """ deserializes the JSON File to __objects """
+        # classes matched here for recreation
+        classes = {'BaseModel': BaseModel, 'User': User, 'State': State,
+                   'City': City, 'Amenity': Amenity, 'Place': Place,
+                   'Review': Review}
 
         if os.path.exists(FileStorage.__file_path):
             # only if the JSON File exists
@@ -46,10 +56,9 @@ class FileStorage:
                     my_dict = json.loads(json_string)
 
                     for key, value in my_dict.items():
-                        # obj_class, obj.split()
-                        # object class determining
+                        obj_class, obj_id = key.split('.')
                         # instance recreation
-                        reloaded_object = BaseModel(**value)
+                        reloaded_object = classes[obj_class](**value)
                         # storing recreated instance to __object
                         FileStorage.new(self, reloaded_object)
             except FileNotFoundError:
