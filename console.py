@@ -181,12 +181,15 @@ class HBNBCommand(cmd.Cmd):
         if args[2] in obj_dic[key].__dict__:
             obj = getattr(obj_dic[key], args[2])  # getting the attribute value
             attr_type = type(obj)  # determining the attribute type
-            # casting the new value to the existing attribute type
-            value = attr_type(args[3])
+
+            if attr_type is not type(args[3]):
+                # casting the new value to the existing attribute type
+                value = attr_type(args[3])
             setattr(obj_dic[key], args[2], value)
             # setting a new value for the attribute
             models.storage.save()
             return
+
         # adding a new attribute
         setattr(obj_dic[key], args[2], args[3])
         models.storage.save()  # saving changes to JSON File
