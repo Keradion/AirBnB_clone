@@ -3,6 +3,12 @@
 import cmd
 from models.base_model import BaseModel
 import models
+from models.user import User
+from models.state import State
+from models.place import Place
+from models.city import City
+from models.review import Review
+from models.amenity import Amenity
 
 
 class HBNBCommand(cmd.Cmd):
@@ -42,17 +48,20 @@ class HBNBCommand(cmd.Cmd):
         """
         create a new instance , save it to json and print its id
         """
+        classes = {'BaseModel': BaseModel, 'User': User, 'State': State,
+                   'City': City, 'Amenity': Amenity, 'Place': Place,
+                   'Review': Review}
 
         if len(arg) == 0:
             print('** class name missing **')
             return
         args = arg.split()
-        if args[0] != 'BaseModel':
+        if args[0] not in classes:
             print('** class doesn\'t exist **')
             return
 
         # create an instance
-        instance = BaseModel()
+        instance = classes[args[0]]()
 
         # instance saved to json
         instance.save()
@@ -66,13 +75,17 @@ class HBNBCommand(cmd.Cmd):
         based on the class name
         """
 
+        classes = {'BaseModel': BaseModel, 'User': User, 'State': State,
+                   'City': City, 'Amenity': Amenity, 'Place': Place,
+                   'Review': Review}
+
         if len(arg) == 0:
             print('** class name missing **')
             return
 
         args = arg.split()
 
-        if args[0] != 'BaseModel':
+        if args[0] not in classes:
             print('** class doesn\'t exist **')
             return
 
@@ -96,13 +109,18 @@ class HBNBCommand(cmd.Cmd):
         Delete an instance based on the class name
         and id , save the change into JSON file
         """
+
+        classes = {'BaseModel': BaseModel, 'User': User, 'State': State,
+                   'City': City, 'Amenity': Amenity, 'Place': Place,
+                   'Review': Review}
+
         if len(arg) == 0:
             print('** class name missing **')
             return
 
         args = arg.split()
 
-        if args[0] != 'BaseModel':
+        if args[0] not in classes:
             print('** class doesn\'t exist **')
             return
 
@@ -126,6 +144,11 @@ class HBNBCommand(cmd.Cmd):
         prints all string representation of all instances based or not
         on the class name
         """
+
+        classes = {'BaseModel': BaseModel, 'User': User, 'State': State,
+                   'City': City, 'Amenity': Amenity, 'Place': Place,
+                   'Review': Review}
+
         instance_list = []  # to store string representation in a list
         obj_dic = models.storage.all()
 
@@ -147,13 +170,17 @@ class HBNBCommand(cmd.Cmd):
         JSON File.
         Usage: update <class name> <id> <attribute name> "<attribute value>"
         """
+        classes = {'BaseModel': BaseModel, 'User': User, 'State': State,
+                   'City': City, 'Amenity': Amenity, 'Place': Place,
+                   'Review': Review}
+
         if len(arg) == 0:  # if class name is missing
             print('** class name is missing **')
             return
 
         args = arg.split()
 
-        if args[0] != 'BaseModel':  # if class name doesn't exist
+        if args[0] not in classes:  # if class name doesn't exist
             print('** class doesn\'t exist **')
             return
 
