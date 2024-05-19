@@ -224,6 +224,23 @@ class HBNBCommand(cmd.Cmd):
         setattr(obj_dic[key], args[2], args[3])
         models.storage.save()  # saving changes to JSON File
 
+    def default(Self, arg):
+        """
+        additional command for our interpreter
+        <class name>.count - returns the number of instances in the class
+        """
+        class_name, command = arg.split('.')
+        objects = models.storage.all()
+
+        if command == 'count()':
+            count = 0
+
+            for object_ in objects.values():
+                if object_.__class__.__name__ == class_name:
+                    count = count + 1
+
+        print(count)
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
