@@ -98,6 +98,7 @@ class HBNBCommand(cmd.Cmd):
         """
         if len(arg) == 0:
             print('** class name missing **')
+            return 
 
         args = arg.split()
 
