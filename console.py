@@ -104,9 +104,11 @@ class HBNBCommand(cmd.Cmd):
 
         if args[0] != 'BaseModel':
             print('** class doesn\'t exist **')
+            return
 
         if len(args) == 1:
             print('** instance id missing **')
+            return
 
         # dict storing all objects based on class name and id
         obj_dic = models.storage.all()
