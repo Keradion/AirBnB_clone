@@ -150,7 +150,6 @@ class HBNBCommand(cmd.Cmd):
             return
 
         args = arg.split()
-        args[3] = args[3].replace('"', "")
 
         if args[0] != 'BaseModel':  # if class name doesn't exist
             print('** class doesn\'t exist **')
@@ -192,6 +191,7 @@ class HBNBCommand(cmd.Cmd):
             return
 
         # adding a new attribute
+        args[3] = args[3].replace('"', "")
         setattr(obj_dic[key], args[2], args[3])
         models.storage.save()  # saving changes to JSON File
 
