@@ -150,6 +150,7 @@ class HBNBCommand(cmd.Cmd):
             return
 
         args = arg.split()
+        args[1] = args[1].replace('"', "")
 
         if args[0] != 'BaseModel':  # if class name doesn't exist
             print('** class doesn\'t exist **')
