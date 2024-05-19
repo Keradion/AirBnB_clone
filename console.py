@@ -154,7 +154,7 @@ class HBNBCommand(cmd.Cmd):
 
         if len(arg) > 0:
             args = arg.split()
-            if args[0] != 'BaseModel':  # if class name exist with the command
+            if args[0] not in classes:  # if class name exist with the command
                 print('** class doesn\'t exist **')
                 return
 
