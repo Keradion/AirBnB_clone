@@ -98,7 +98,7 @@ class HBNBCommand(cmd.Cmd):
         """
         if len(arg) == 0:
             print('** class name missing **')
-            return 
+            return
 
         args = arg.split()
 
@@ -182,7 +182,7 @@ class HBNBCommand(cmd.Cmd):
             obj = getattr(obj_dic[key], args[2])  # getting the attribute value
             attr_type = type(obj)  # determining the attribute type
 
-            if attr_type is not type(args[3]):
+            if not isinstance(attr_type, args[3]):
                 # casting the new value to the existing attribute type
                 value = attr_type(args[3])
             setattr(obj_dic[key], args[2], value)
