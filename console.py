@@ -243,8 +243,5 @@ class HBNBCommand(cmd.Cmd):
             print(count)
             return 
 
-        if command == 'show()':
-
-
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
