@@ -31,8 +31,12 @@ class Test_base_model(unittest.TestCase):
     def test_created_at(self):
         """ Test created_at atrribute of BaseModel """
 
-    def test_str(Self):
+    def test_str(self):
         """ Test str() """
+        obj1 = BaseModel() 
+        # expected output from print(obj1)
+        expected_output = '[BaseModel] ({}) {}'.format(obj1.id, obj1.__dict__)
+        self.assertEqual(str(obj1), expected_output)
 
 
 if __name__ == '__main__':
