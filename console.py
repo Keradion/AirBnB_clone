@@ -228,7 +228,7 @@ class HBNBCommand(cmd.Cmd):
         """
         additional command for our interpreter
         <class name>.count - returns the number of instances in the given class
-        <class name>.show - show/retrieve instance based on given id 
+        <class name>.show - show/retrieve instance based on given id
         """
         class_name, command = arg.split('.')
         objects = models.storage.all()
@@ -241,7 +241,8 @@ class HBNBCommand(cmd.Cmd):
                     count = count + 1
 
             print(count)
-            return 
+            return
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
