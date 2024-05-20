@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ Module that defines class Basemodel """
 
-import uuid 
+import uuid
 from datetime import datetime
 import models
 
@@ -19,7 +19,7 @@ class BaseModel:
                     setattr(self, key, datetime.fromisoformat(value))
                 elif key != '__class__':
                     setattr(self, key, value)
-            return 
+            return
 
         self.id = str(uuid.uuid4())
         self.created_at = datetime.now()

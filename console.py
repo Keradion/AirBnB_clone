@@ -175,7 +175,7 @@ class HBNBCommand(cmd.Cmd):
                    'Review': Review}
 
         if len(arg) == 0:  # if class name is missing
-            print('** class name is missing **')
+            print('** class name missing **')
             return
 
         args = arg.split()
@@ -198,7 +198,7 @@ class HBNBCommand(cmd.Cmd):
             return
 
         if len(args) == 2:  # attribute name is missing
-            print('** attribute name missing *')
+            print('** attribute name missing **')
             return
 
         if len(args) == 3:  # attribute value is missing
@@ -227,7 +227,8 @@ class HBNBCommand(cmd.Cmd):
     def default(Self, arg):
         """
         additional command for our interpreter
-        <class name>.count - returns the number of instances in the class
+        <class name>.count - returns the number of instances in the given class
+        <class name>.show - show/retrieve instance based on given id 
         """
         class_name, command = arg.split('.')
         objects = models.storage.all()
@@ -239,7 +240,10 @@ class HBNBCommand(cmd.Cmd):
                 if object_.__class__.__name__ == class_name:
                     count = count + 1
 
-        print(count)
+            print(count)
+            return 
+
+        if command == 'show()':
 
 
 if __name__ == '__main__':
