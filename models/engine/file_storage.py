@@ -13,7 +13,7 @@ from models.amenity import Amenity
 
 class FileStorage:
     """ serializes/deserializes instances to or from json file """
-    __file_path = "json.file"
+    __file_path = "file.json"
     __objects = {}
 
     def all(self):
